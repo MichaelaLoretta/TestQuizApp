@@ -27,6 +27,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <TextView
+                android:id="@+id/tvCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="10dp"
+                android:text="Time Left 10s"
+                android:textColor="#FFFFFF"
+                android:textSize="19sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="1/10"
+                android:textColor="#FFFFFF"
+                android:textSize="19sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvCountdown"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,46 +82,20 @@
 
 
             <TextView
-                android:id="@+id/tvUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="116dp"
-                android:text="Name"
-                android:textColor="#FFFFFF"
-                android:textSize="19sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvgoodluck"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvgoodluck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="63dp"
-                android:layout_marginTop="20dp"
-                android:text="Good Luck"
-                android:textColor="#FFFFFF"
-                android:textSize="19sp"
-                app:layout_constraintEnd_toStartOf="@+id/tvUserName"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/tvQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="11dp"
+                android:layout_marginBottom="80dp"
                 android:text="Heres a Question for you!"
                 android:textColor="@color/white"
                 android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvAnswerOne"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvAnswerFour"
@@ -106,6 +106,7 @@
                 android:background="@drawable/answers_bg"
                 android:padding="20dp"
                 android:shadowColor="#FFFFFF"
+                android:elevation="5dp"
                 android:text="Answer Four"
                 android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -116,6 +117,7 @@
             <TextView
                 android:id="@+id/tvAnswerOne"
                 android:gravity="center"
+                android:elevation="5dp"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -133,6 +135,7 @@
                 android:id="@+id/tvAnswerTwo"
                 android:gravity="center"
                 android:layout_width="300dp"
+                android:elevation="5dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/answers_bg"
@@ -153,6 +156,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/answers_bg"
                 android:padding="20dp"
+                android:elevation="5dp"
                 android:shadowColor="#FFFFFF"
                 android:text="Answer Three"
                 android:textSize="25sp"
