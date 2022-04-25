@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textProgress"
+                android:id="@+id/tvProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="86dp"
@@ -52,6 +52,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvCountdown"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="58dp"
+                android:layout_marginEnd="89dp"
+                android:text="Heres a Question for you!"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCountdown" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,107 +91,70 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="20dp">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-            <TextView
-                android:id="@+id/tvQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginBottom="80dp"
-                android:text="Heres a Question for you!"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toTopOf="@+id/tvAnswerOne"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/answersContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foregroundGravity="center" >
 
-            <TextView
-                android:id="@+id/tvAnswerFour"
-                android:gravity="center"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="151dp"
-                android:background="@drawable/answers_bg"
-                android:padding="20dp"
-                android:shadowColor="#FFFFFF"
-                android:elevation="5dp"
-                android:text="Answer Four"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+                <ListView
+                    android:id="@+id/answersList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:elevation="5dp"
+                    android:padding="25dp"
+                    android:dividerHeight="10dp"
+                    android:divider="@color/white"
+                    android:layout_margin="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvAnswerOne"
-                android:gravity="center"
-                android:elevation="5dp"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answers_bg"
-                android:padding="20dp"
-                android:shadowColor="#FFFFFF"
-                android:text="Answer One"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/tvAnswerTwo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+                <ImageButton
+                    android:id="@+id/btnNext"
+                    android:contentDescription="next button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="236dp"
+                    android:background="@drawable/img_btn_bg"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_forward"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/tvAnswerTwo"
-                android:gravity="center"
-                android:layout_width="300dp"
-                android:elevation="5dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answers_bg"
-                android:padding="20dp"
-                android:shadowColor="#FFFFFF"
-                android:text="Answer Two"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/tvAnswerThree"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/tvAnswerThree"
-                android:gravity="center"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answers_bg"
-                android:padding="20dp"
-                android:elevation="5dp"
-                android:shadowColor="#FFFFFF"
-                android:text="Answer Three"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/tvAnswerFour"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <ImageButton
             android:id="@+id/btnBack"
+            android:contentDescription="Back Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#00000000"
             android:padding="18dp"
             android:src="@drawable/ic_backward"
-            android:background="#00000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
