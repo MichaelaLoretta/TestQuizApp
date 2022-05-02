@@ -11,8 +11,10 @@
         <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/activity_congrats.xml" value="0.23391215526046988" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/activity_login.xml" value="0.23391215526046988" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/activity_quiz.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/activity_quiz.xml" value="0.165" />
         <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/activity_stats.xml" value="0.165" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/answers.xml" value="0.1" />
+        <entry key="..\:/Users/micha/AndroidStudioProjects/TestQuizApp/app/src/main/res/layout/congratslist.xml" value="0.25" />
       </map>
     </option>
   </component>

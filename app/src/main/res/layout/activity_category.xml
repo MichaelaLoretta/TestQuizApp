@@ -128,6 +128,7 @@
             android:id="@+id/tvCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="100dp"
             android:text="Choose a Category"
             android:textColor="#FFFFFF"
@@ -136,7 +137,8 @@
             app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topBar" />
 
         <TextView
             android:id="@+id/textView3"

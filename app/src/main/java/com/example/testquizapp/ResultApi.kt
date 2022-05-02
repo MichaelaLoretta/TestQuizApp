@@ -8,5 +8,5 @@ interface ResultApi {
 
     @GET("api.php")
     fun getInfo(@Query("amount") amount: Int,
-    @Query("difficulty") difficulty: String): Call<ResultFeed>
+    @Query("category") category: Int, @Query("type") type: String): Call<ResultFeed>
 }
