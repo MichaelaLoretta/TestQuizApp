@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class QuizActivity : AppCompatActivity() {
 
     companion object {
-        //var selectedAnswers: ArrayList<String> = ArrayList()
+
         val allJoined: ArrayList<JoinedFeed> = ArrayList()
         var questionNr: Int = 0
         var isCorrect: Int = 0
@@ -137,15 +137,12 @@ class QuizActivity : AppCompatActivity() {
 
 
                     if (questionNum == allJoined[0].questions.count()) {
-                        //nextButton.setBackgroundColor(3)
+
                         nextButton.setOnClickListener {
 
                             val intent = Intent(this@QuizActivity, CongratsActivity::class.java)
-                            //intent.putExtra("Correct", isCorrect)
-                            //intent.putExtra("Incorrect", isIncorrect)
+                            intent.putExtra("Correct", isCorrect)
                             startActivity(intent)
-
-                            Toast.makeText(this@QuizActivity, "Your Score was $isCorrect / 10", Toast.LENGTH_LONG).show()
 
                         }
 
