@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 
 class AnswerAdapter(private val context : Context,
-val answers: ArrayList<String>) : BaseAdapter() {
+private val answers: ArrayList<String>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return answers.count()
@@ -27,8 +27,9 @@ val answers: ArrayList<String>) : BaseAdapter() {
         val layoutInflater: LayoutInflater = LayoutInflater.from(context)
         val answerRow: View = layoutInflater.inflate(R.layout.answers, viewGroup, false)
         val answerNumber = p0+1
-        answerRow.findViewById<TextView>(R.id.answerText).text = "${answers[p0]}"
         answerRow.findViewById<TextView>(R.id.answerNum).text = "${answerNumber}"
+        answerRow.findViewById<TextView>(R.id.answerText).text = "${answers[p0]}"
+
 
         return answerRow
 

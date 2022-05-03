@@ -1,24 +1,23 @@
 package com.example.testquizapp
-
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.abs
+
 
 
 class QuizActivity : AppCompatActivity() {
 
     companion object {
-        var selectedAnswers: ArrayList<String> = ArrayList()
+        //var selectedAnswers: ArrayList<String> = ArrayList()
         val allJoined: ArrayList<JoinedFeed> = ArrayList()
         var questionNr: Int = 0
         var isCorrect: Int = 0
@@ -29,13 +28,8 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        var backButton = findViewById<ImageButton>(R.id.btnBack)
-        val finishLayout = findViewById<ConstraintLayout>(R.id.finished)
         val answers: ListView = findViewById(R.id.answersList)
 
-
-        //hiding the overlay layout
-        finishLayout.visibility = View.GONE
 
         val questions: ArrayList<String> = ArrayList()
         val allAnswers: ArrayList<ArrayList<String>> = ArrayList()
@@ -91,21 +85,19 @@ class QuizActivity : AppCompatActivity() {
             }
 
 
-
             private fun startQuiz() {
                 val progress = findViewById<TextView>(R.id.tvProgress)
                 val nextButton = findViewById<ImageButton>(R.id.btnNext)
                 val questionView = findViewById<TextView>(R.id.tvQuestion)
-                val finished = findViewById<ConstraintLayout>(R.id.finished)
-                val congratsList = findViewById<ListView>(R.id.congratsList)
 
-                val questionNumber = questionNr
+                var questionNum = questionNr
 
                 //get the current question
                 val currentQuestion = allJoined[0].questions[questionNr]
 
                 //increase displayed progressnr by one
-                progress.text = "{${questionNr+1}/ ${allJoined[0].questions.count()}}"
+                questionNum++
+                progress.text = "{${questionNum}/ ${allJoined[0].questions.count()}}"
 
                 //display the current question
                 questionView.text = currentQuestion
@@ -114,33 +106,63 @@ class QuizActivity : AppCompatActivity() {
                 val qAnswers: ArrayList<String> = allJoined[0].answers[questionNr]
                 setAnswers(qAnswers)
 
-                answers.setOnItemClickListener{parent, view, position, id ->
+
+                answers.setOnItemClickListener { _, _, _, id ->
                     val clickedId = id.toInt()
                     val correctAnswer = allJoined[0].correct_answer[questionNr]
                     val selectedAnswer = allJoined[0].answers[questionNr][clickedId]
                     val answerIsCorrect = selectedAnswer == correctAnswer
 
-                    if(answerIsCorrect){
+
+                    if (answerIsCorrect) {
                         isCorrect++
-                    }else{
+                    } else {
                         isIncorrect++
                     }
 
-                    if(questionNr == allJoined[0].questions.count() -1 && questionNr == 10){
-                        finishLayout.visibility = View.VISIBLE
+                    if (selectedAnswer == correctAnswer) {
+                        Toast.makeText(
+                            this@QuizActivity,
+                            "Yay! Correct $correctAnswer",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else {
+                        Toast.makeText(
+                            this@QuizActivity,
+                            "Sorry, Incorrect. Answer was $correctAnswer",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
 
 
-                        val info: DoneFeed = DoneFeed(
-                            qCorrectAnswers = "$isCorrect",
-                            qNegative = "$isIncorrect",
+                    if (questionNum == allJoined[0].questions.count()) {
+                        //nextButton.setBackgroundColor(3)
+                        nextButton.setOnClickListener {
+
+                            val intent = Intent(this@QuizActivity, CongratsActivity::class.java)
+                            //intent.putExtra("Correct", isCorrect)
+                            //intent.putExtra("Incorrect", isIncorrect)
+                            startActivity(intent)
+
+                            Toast.makeText(this@QuizActivity, "Your Score was $isCorrect / 10", Toast.LENGTH_LONG).show()
+
+                        }
 
 
-                        )
+                    } else {
+                        nextButton.setOnClickListener {
+                            questionNum++
+                            questionNr++
 
-                        congratsList.adapter = CongratsAdapter(this@QuizActivity, info)
+                            progress.text = "${questionNum}/${allJoined[0].questions.count()}"
+                            questionView.text = allJoined[0].questions[questionNr]
 
-                    }else{
-                        questionNr++
+                            val newAnswers = allJoined[0].answers[questionNr]
+                            setAnswers(newAnswers)
+
+                        }
+
 
                     }
 
@@ -149,6 +171,7 @@ class QuizActivity : AppCompatActivity() {
 
 
             }
+
 
             fun setAnswers(qAnswers: ArrayList<String>) {
                 for (value in qAnswers) {
@@ -156,9 +179,9 @@ class QuizActivity : AppCompatActivity() {
                 }
 
 
-
             }
 
 
         })
-    }}
+    }
+}

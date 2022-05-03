@@ -15,7 +15,4 @@ class JoinedFeed(
     val correct_answer: ArrayList<String>
 )
 
-class DoneFeed(
-    val qCorrectAnswers: String,
-    val qNegative: String
-)
+
