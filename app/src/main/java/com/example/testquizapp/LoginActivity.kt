@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
 
             val userName : String = name.text.toString()
 
-            Toast.makeText(this, "hello $userName", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, CategoryActivity::class.java)
             intent.putExtra("userName", userName) //skickar vidare namnet till Category-sidan

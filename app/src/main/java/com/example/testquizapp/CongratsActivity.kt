@@ -3,6 +3,7 @@ package com.example.testquizapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -26,6 +27,7 @@ class CongratsActivity : AppCompatActivity() {
         if(isCorrect <= 5){
 
             myScore.text = "Bummer, You Lose! Your score is $isCorrect, Lets try again!"
+            score.visibility = View.GONE
 
         }else{
             myScore.text = "Congrats, you WIN!! Your score is"
